@@ -29,9 +29,7 @@ body {
   position: absolute;
   top: 36%;
   left: 50%;
-  transform-origin: 50% 100%; /* Rotera från mitten och ner */
-  transition: all 0.05s;
-  transition-timing-function: cubic-bezier(0.4, 2.3, 0.3, 1);
+ 
 }
 
 .second-hand {

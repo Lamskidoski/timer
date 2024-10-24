@@ -30,7 +30,6 @@ const AnalogTimer = ({ minutes, onCancel, onTimerEnd, onMenuClick }) => {
       <img src="/src/assets/clockface.png" alt="clock-face" className="clock-face" />
       <div className="hand minute-hand" style={{ transform: `rotate(${minutesDegrees}deg)` }} />
       <div className="hand second-hand" style={{ transform: `rotate(${secondsDegrees}deg)` }} />
-
       <button className="abort-button" onClick={onCancel}>ABORT TIMER</button>
     </div>
   );
