@@ -4,13 +4,12 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 20px;
+  margin: 0;
 }
 
 .timer {
-  position: relative;
-  width: 350px;
-  height: 350px;
+  width: 100vw;
+  height: 100vh;
   margin: 50px auto;
   display: flex;
   align-items: center;
@@ -28,7 +27,7 @@ body {
 
 .hand {
   position: absolute;
-  top: -5%;
+  top: 36%;
   left: 50%;
   transform-origin: 50% 100%; /* Rotera från mitten och ner */
   transition: all 0.05s;
@@ -39,14 +38,24 @@ body {
   width: 1px;
   height: 45%;
   background-color: red;
-  transform-origin: 50% 100%; /* Roterar från botten */
+  transform-origin: 50% 100%;
 }
 
 .minute-hand {
   width: 3px;
   height: 45%;
   background-color: black;
-  transform-origin: 50% 100%; /* Roterar från botten */
+  transform-origin: 50% 100%;
+}
+
+/* Placera menu-icon högst upp till vänster */
+.menu-icon {
+  position: absolute;
+  top: 10px; /* Placera 10px från toppen */
+  left: 10px; /* Placera 10px från vänster */
+  width: 30px; /* Justera storleken på ikonen */
+  cursor: pointer;
+  z-index: 100; /* Se till att ikonen visas över andra element */
 }
 
 /* Anpassningar för mindre skärmar */
@@ -57,29 +66,30 @@ body {
   }
 
   .second-hand {
-    height: 40%; /* Minska storlek på visarna */
+    height: 40%;
   }
 
   .minute-hand {
-    height: 40%; /* Minska storlek på visarna */
+    height: 40%;
   }
 }
 
 @media (max-width: 480px) {
   body {
-    margin: 10px; /* Minska ytterligare marginaler för mobil */
+    margin: 10px;
   }
 
   .timer {
-    width: 250px;
-    height: 250px; /* Gör klockan mindre */
+    width: 205px;
+    height: 250px;
   }
 
   .second-hand {
-    height: 35%; /* Anpassa storlek på sekundvisaren */
+    height: 11%;
   }
 
   .minute-hand {
-    height: 35%; /* Anpassa storlek på minutvisaren */
+    height: 11%;
+    
   }
 }
