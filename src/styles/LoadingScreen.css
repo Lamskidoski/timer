@@ -1,0 +1,41 @@
+/* Fullskärmsmobilvy */
+.loading-container {
+    display: flex;
+    flex-direction: column; /* Arrangera logotypen och texten i en kolumn */
+    justify-content: center; /* Vertikalt centrerad */
+    align-items: center; /* Horisontellt centrerad */
+    height: 100vh; /* Ta upp hela höjden på skärmen */
+    background-color: #000; /* Svart bakgrund */
+    text-align: center;
+  }
+  
+  /* Logotypens stil */
+  .loading-container img {
+    width: 80px; /* Använd en bredd på 80px för logotypen */
+    margin-bottom: 20px; /* Mellanrum mellan logotypen och texten */
+    cursor: pointer; /* Gör logotypen klickbar */
+  }
+  
+  .loading-container h1 {
+    color: #fff;
+  }
+
+  /* Textstil för sloganen */
+  .loading-container p {
+    font-size: 16px;
+    color: #fff; /* Vit text */
+    font-weight: 300; /* Tunnare typsnitt för sloganen */
+    margin-top: 10px;
+  }
+  
+  /* Responsiv design för större skärmar (exempelvis tablets) */
+  @media (min-width: 768px) {
+    .loading-container img {
+      width: 120px; /* Förstora logotypen för större skärmar */
+    }
+  
+    .loading-container p {
+      font-size: 18px; /* Öka textstorleken på större skärmar */
+    }
+  }
+  

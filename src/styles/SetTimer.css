@@ -1,0 +1,103 @@
+/* Styla huvudcontainern */
+.set-timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;  /* Full höjd på skärmen */
+    padding: 0px;
+    background-color: #000;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Tidsvalet (knappar för att justera minuter) */
+  .time-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .time-selector button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .time-selector span {
+    font-size: 48px;
+    font-weight: bold;
+    padding: 20px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+    color: #fff;
+  }
+  
+  /* Checkboxar för intervaller och paus */
+  .set-timer-container label {
+    font-size: 16px;
+    color: #fff;
+    margin-left: 8px;
+  }
+  
+  .set-timer-container input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+  }
+  
+  .set-timer-container input[type="checkbox"]:checked {
+    background-color: #fff;
+  }
+  
+  .set-timer-container input[type="checkbox"]:checked::after {
+    content: '✕';
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+  }
+  
+  /* Styla startknappen */
+  button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+  }
+  
+  button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Media query för större skärmar */
+  @media (min-width: 768px) {
+    .time-selector span {
+      font-size: 64px;
+    }
+  
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+    }
+  }
+  /* Menyikon i det övre vänstra hörnet */
+.menu-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    cursor: pointer;
+  }
+  

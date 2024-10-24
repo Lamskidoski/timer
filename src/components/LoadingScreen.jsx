@@ -47,6 +47,7 @@
 // test 3 
 import React, { useEffect } from 'react';
 import anime from 'animejs';
+import '../styles/LoadingScreen.css'
 
 const LoadingScreen = ({ onLogoClick }) => {
   useEffect(() => {
@@ -60,7 +61,8 @@ const LoadingScreen = ({ onLogoClick }) => {
 
   return (
     <div className="loading-container" style={{ backgroundColor: '#000', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <img src="/src/assets/logo.png" alt="Logo" onClick={onLogoClick} style={{ cursor: 'pointer' }} />
+      <img src="/src/assets/menu.svg" alt="Logo" onClick={onLogoClick} style={{ cursor: 'pointer' }} />
+      <h1>Interval</h1>
       <p style={{ color: '#fff' }}>For all your timing needs</p>
     </div>
   );

@@ -34,34 +34,30 @@
 
 //test 2
 import React, { useState } from 'react';
+import '../styles/SetTimer.css';
 
-const SetTimer = ({ onStartTimer }) => {
+const SetTimer = ({ onStartTimer, onMenuClick }) => {
   const [minutes, setMinutes] = useState(10);
-  const [intervals, setIntervals] = useState(false);
-  const [pause, setPause] = useState(false);
 
   const startTimer = () => {
-    onStartTimer(minutes, intervals, pause);
+    onStartTimer(minutes);
   };
 
   return (
-    <div className="set-timer-container" style={{ textAlign: 'center', padding: '20px' }}>
+    <div className="set-timer-container">
+      {/* Menyikon i det övre vänstra hörnet */}
+      <img src="/src/assets/menu.svg" alt="Menu" className="menu-icon" onClick={onMenuClick} />
+
       <div className="time-selector">
         <button onClick={() => setMinutes(minutes - 1)}>{'<'}</button>
         <span>{minutes} minutes</span>
         <button onClick={() => setMinutes(minutes + 1)}>{'>'}</button>
       </div>
-      <div>
-        <input type="checkbox" checked={intervals} onChange={() => setIntervals(!intervals)} />
-        <label>intervals (VG)</label>
-      </div>
-      <div>
-        <input type="checkbox" checked={pause} onChange={() => setPause(!pause)} />
-        <label>5 min break / interval (VG)</label>
-      </div>
-      <button onClick={startTimer} style={{ marginTop: '20px' }}>START TIMER</button>
+
+      <button onClick={startTimer}>START TIMER</button>
     </div>
   );
 };
 
 export default SetTimer;
+

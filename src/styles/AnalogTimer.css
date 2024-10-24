@@ -1,0 +1,101 @@
+/* Huvudcontainer för AnalogTimer */
+.analog-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh; /* Full höjd av skärmen */
+    background-color: #f5f5f5; /* Ljusgrå bakgrund */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Klockan - cirkel */
+  .clock {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    border: 5px solid #333; /* Svart kant */
+    border-radius: 50%; /* Gör klockan rund */
+    background-color: #f9f9f9; /* Ljus bakgrundsfärg för klockan */
+    margin-bottom: 20px;
+    transform: rotate(7deg); /* Roterar hela klockan 15 grader medurs */
+  }
+
+  /* Tickmarks runt klockan */
+  .tickmarks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .tick {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    transform-origin: 50% 50%;
+  }
+  
+  .tick-mark {
+    width: 2px;
+    height: 10px;
+    background-color: #333;
+  }
+  
+  .tick:nth-child(5n) .tick-mark {
+    height: 20px; /* Var femte tick är längre */
+  }
+  
+  /* Stil för klockvisarna */
+  .hand {
+    position: absolute;
+    top: 50%;
+    left: 11%;
+    transform-origin: 100%;
+    transform: rotate(0deg);
+    transition: transform 1s linear; /* Smidig rotation */
+  }
+  
+  /* Minutvisaren */
+  .hand.minute {
+    width: 40%;
+    height: 4px;
+    background-color: #333; /* Svart färg */
+  }
+  
+  /* Sekundvisaren */
+  .hand.second {
+    width: 40%;
+    height: 2px;
+    background-color: red; /* Röd färg för sekundvisaren */
+  }
+  
+  /* Titel för klockan */
+  .analog-timer .clock-title {
+    font-size: 16px;
+    color: #333;
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+  }
+  
+  /* Stil för knappen */
+  .analog-timer button {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .analog-timer button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
