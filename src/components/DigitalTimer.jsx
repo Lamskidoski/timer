@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EasyTimer from 'easytimer.js';
+import '../styles/DigitalTimer.css'
 
 const DigitalTimer = ({ minutes, onTimerEnd, onCancel }) => {
   const [time, setTime] = useState({ minutes: minutes, seconds: 0 });
