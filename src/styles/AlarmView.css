@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #1a1a1a;  /* Mörk bakgrundsfärg */
+  background-color: #000;  /* Mörk bakgrundsfärg */
   text-align: center;
   color: #fff;
   padding: 20px;  /* Ger lite padding för att hålla innehållet från kanterna */
@@ -34,8 +34,8 @@
   cursor: pointer;
   margin-top: 200px;
   transition: background-color 0.3s ease, color 0.3s ease;
-  width: 90%;  /* Gör knappen bredare och anpassad för mobilskärm */
-  max-width: 300px;  /* Begränsa knappens maxbredd */
+  width: 90%;  
+  max-width: 300px; 
 }
 
 .alarm-view button:hover {
@@ -102,12 +102,13 @@
 
 @media (max-width: 480px) {
   .alarm-view h1 {
-    font-size: 18px; /* Ytterligare minskning av rubrikstorlek för mobil */
+    font-size: 30px; /* Ytterligare minskning av rubrikstorlek för mobil */
   }
 
   .alarm-view button {
-    font-size: 12px; /* Anpassa knappens textstorlek för mobiler */
+    font-size: 20px; /* Anpassa knappens textstorlek för mobiler */
     padding: 8px 16px;
+    width: 210px;
   }
 
   .alarm-view::before {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import EasyTimer from 'easytimer.js';
-import '../styles/DigitalTimer.css'
+import '../styles/DigitalTimer.css';
 
-const DigitalTimer = ({ minutes, onTimerEnd, onCancel }) => {
+const DigitalTimer = ({ minutes, onTimerEnd, onCancel, onMenuClick }) => {
   const [time, setTime] = useState({ minutes: minutes, seconds: 0 });
   const timer = new EasyTimer();
 
@@ -23,6 +23,8 @@ const DigitalTimer = ({ minutes, onTimerEnd, onCancel }) => {
 
   return (
     <div className="digital-timer" style={{ textAlign: 'center', fontSize: '48px' }}>
+      <img src="/src/assets/menu.svg" alt="Menu" className="menu-icon" onClick={onMenuClick} />
+      
       <p>{`${time.minutes}:${time.seconds < 10 ? '0' : ''}${time.seconds}`}</p>
       <button onClick={onCancel} style={{ marginTop: '20px' }}>
         ABORT TIMER

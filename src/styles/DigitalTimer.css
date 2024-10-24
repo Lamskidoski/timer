@@ -27,10 +27,11 @@
 }
 
 .digital-timer p {
-  font-size: 72px; /* Minska fontstorlek för timer */
+  font-size: 120px; /* Minska fontstorlek för timer */
   font-weight: bold;
-  margin-bottom: 30px; /* Justera marginaler */
+  margin-bottom: 80px; /* Justera marginaler */
   color: #fff;
+
 }
 
 .digital-timer button {
@@ -38,7 +39,7 @@
   border: none;
   color: #fff;
   padding: 8px 16px; /* Mindre padding för mobil */
-  font-size: 18px; /* Mindre fontstorlek för mobil */
+  font-size: 54px; /* Mindre fontstorlek för mobil */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -52,6 +53,14 @@
   color: #fff;
 }
 
+.menu-icon {
+  position: absolute;
+  top: 10px; /* Placera 10px från toppen */
+  left: 10px; /* Placera 10px från vänster */
+  width: 30px; /* Justera storleken på ikonen */
+  cursor: pointer;
+  z-index: 100; /* Se till att ikonen visas över andra element */
+}
 /* Lägg till responsiv design för mindre skärmar */
 @media (max-width: 768px) {
   .digital-timer h1 {
@@ -60,11 +69,12 @@
 
   .digital-timer p {
     font-size: 60px; /* Anpassa storlek för mindre skärmar */
+    margin-bottom: 20px;
   }
 
   .digital-timer button {
     padding: 6px 12px; /* Mindre padding för små skärmar */
-    font-size: 16px; /* Anpassa textstorlek */
+    font-size: 28px; /* Anpassa textstorlek */
   }
 }
 
@@ -74,11 +84,11 @@
   }
 
   .digital-timer p {
-    font-size: 48px; /* Anpassa storlek för mycket små skärmar */
+    font-size: 76px; /* Anpassa storlek för mycket små skärmar */
   }
 
   .digital-timer button {
     padding: 5px 10px; /* Ytterligare minskning av padding */
-    font-size: 14px; /* Mindre textstorlek */
+    font-size: 30px; /* Mindre textstorlek */
   }
 }

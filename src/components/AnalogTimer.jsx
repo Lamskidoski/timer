@@ -25,7 +25,6 @@ const AnalogTimer = ({ minutes, onCancel, onTimerEnd, onMenuClick }) => {
 
   return (
     <div className="timer">
-      {/* Lägg till SVG för menyikonen */}
       <img src="/src/assets/menu.svg" alt="Menu" className="menu-icon" onClick={onMenuClick} />
       
       <img src="/src/assets/clockface.png" alt="clock-face" className="clock-face" />

@@ -49,7 +49,7 @@ const App = () => {
         timerType === 'analog' ? (
           <AnalogTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} onMenuClick={() => setView('menu')} />  
         ) : (
-          <DigitalTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} />
+          <DigitalTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} onMenuClick={() => setView('menu')}/>
         )
       )}
       
