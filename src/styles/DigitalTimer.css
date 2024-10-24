@@ -1,53 +1,84 @@
 .digital-timer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #000;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.digital-timer h1 {
+  font-size: 20px; /* Minska fontstorlek för mobil */
+  text-transform: lowercase;
+  letter-spacing: 1px; /* Justera avstånd */
+  margin-bottom: 30px; /* Mindre marginal för mobil */
+  color: #333;
+}
+
+.menu-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.digital-timer p {
+  font-size: 72px; /* Minska fontstorlek för timer */
+  font-weight: bold;
+  margin-bottom: 30px; /* Justera marginaler */
+  color: #fff;
+}
+
+.digital-timer button {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  padding: 8px 16px; /* Mindre padding för mobil */
+  font-size: 18px; /* Mindre fontstorlek för mobil */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.digital-timer button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.h1 {
+  color: #fff;
+}
+
+/* Lägg till responsiv design för mindre skärmar */
+@media (max-width: 768px) {
   .digital-timer h1 {
-    font-size: 24px;
-    text-transform: lowercase;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
-    color: #333;
+    font-size: 18px; /* Minska ännu mer för små skärmar */
   }
-  
-  .menu-icon {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 30px;
-    cursor: pointer;
-  }
-  
+
   .digital-timer p {
-    font-size: 96px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: #fff;
+    font-size: 60px; /* Anpassa storlek för mindre skärmar */
   }
-  
+
   .digital-timer button {
-    background-color: #000;
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 6px 12px; /* Mindre padding för små skärmar */
+    font-size: 16px; /* Anpassa textstorlek */
   }
-  
-  .digital-timer button:hover {
-    background-color: #333;
-    color: #fff;
+}
+
+@media (max-width: 480px) {
+  .digital-timer h1 {
+    font-size: 16px; /* Ytterligare minskning för väldigt små skärmar */
   }
-  
-  .h1 {
-    color: #fff;
+
+  .digital-timer p {
+    font-size: 48px; /* Anpassa storlek för mycket små skärmar */
   }
+
+  .digital-timer button {
+    padding: 5px 10px; /* Ytterligare minskning av padding */
+    font-size: 14px; /* Mindre textstorlek */
+  }
+}

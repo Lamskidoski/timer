@@ -109,13 +109,24 @@ const App = () => {
       {view === 'set-timer' && <SetTimer onStartTimer={startTimer} onMenuClick={() => setView('menu')} />}
 
       {/* Timer (analog eller digital) */}
-      {view === 'timer' && (
+      {/* {view === 'timer' && (
         timerType === 'analog' ? (
           <AnalogTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} />
         ) : (
           <DigitalTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} />
         )
-      )}
+      )} */}
+      
+      {view === 'timer' && (
+  timerType === 'analog' ? (
+    <AnalogTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} />  
+  ) : (
+    <DigitalTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} />
+  )
+)}
+
+
+      
 
       {/* Pausvy */}
       {view === 'break' && <BreakView onSkip={() => setView('timer')} />}
@@ -123,6 +134,8 @@ const App = () => {
       {/* Alarmvy */}
       {view === 'alarm' && <AlarmView onReset={handleReset} />}  {/* Lägg till onReset-funktion */}
     </div>
+
+    
   );
 };
 

@@ -1,103 +1,85 @@
-/* Huvudcontainer för AnalogTimer */
-.analog-timer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 100vh; /* Full höjd av skärmen */
-    background-color: #000; /* Ljusgrå bakgrund */
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* Klockan - cirkel */
-  .clock {
-    position: relative;
-    width: 240px;
-    height: 240px;
-    border: 5px solid #333; /* Svart kant */
-    border-radius: 50%; /* Gör klockan rund */
-    background-color: #f9f9f9; /* Ljus bakgrundsfärg för klockan */
-    margin-bottom: 20px;
-    transform: rotate(7deg); /* Roterar hela klockan 15 grader medurs */
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 20px;
+}
+
+.timer {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.clock-face {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.hand {
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  transform-origin: 50% 100%; /* Rotera från mitten och ner */
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0.4, 2.3, 0.3, 1);
+}
+
+.second-hand {
+  width: 1px;
+  height: 45%;
+  background-color: red;
+  transform-origin: 50% 100%; /* Roterar från botten */
+}
+
+.minute-hand {
+  width: 3px;
+  height: 45%;
+  background-color: black;
+  transform-origin: 50% 100%; /* Roterar från botten */
+}
+
+/* Anpassningar för mindre skärmar */
+@media (max-width: 768px) {
+  .timer {
+    width: 300px;
+    height: 300px;
   }
 
-  /* Tickmarks runt klockan */
-  .tickmarks {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  .second-hand {
+    height: 40%; /* Minska storlek på visarna */
   }
-  
-  .tick {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    transform-origin: 50% 50%;
+
+  .minute-hand {
+    height: 40%; /* Minska storlek på visarna */
   }
-  
-  .tick-mark {
-    width: 2px;
-    height: 10px;
-    background-color: #333;
+}
+
+@media (max-width: 480px) {
+  body {
+    margin: 10px; /* Minska ytterligare marginaler för mobil */
   }
-  
-  .tick:nth-child(5n) .tick-mark {
-    height: 20px; /* Var femte tick är längre */
+
+  .timer {
+    width: 250px;
+    height: 250px; /* Gör klockan mindre */
   }
-  
-  /* Stil för klockvisarna */
-  .hand {
-    position: absolute;
-    top: 50%;
-    left: 11%;
-    transform-origin: 100%;
-    transform: rotate(0deg);
-    transition: transform 1s linear; /* Smidig rotation */
+
+  .second-hand {
+    height: 35%; /* Anpassa storlek på sekundvisaren */
   }
-  
-  /* Minutvisaren */
-  .hand.minute {
-    width: 40%;
-    height: 4px;
-    background-color: #333; /* Svart färg */
+
+  .minute-hand {
+    height: 35%; /* Anpassa storlek på minutvisaren */
   }
-  
-  /* Sekundvisaren */
-  .hand.second {
-    width: 40%;
-    height: 2px;
-    background-color: red; /* Röd färg för sekundvisaren */
-  }
-  
-  /* Titel för klockan */
-  .analog-timer .clock-title {
-    font-size: 16px;
-    color: #333;
-    letter-spacing: 0.1em;
-    margin-top: 10px;
-  }
-  
-  /* Stil för knappen */
-  .analog-timer button {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 25px;
-    cursor: pointer;
-    margin-top: 30px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .analog-timer button:hover {
-    background-color: #333;
-    color: #fff;
-  }
-  h1 {
-    color: #fff;
-  }
+}

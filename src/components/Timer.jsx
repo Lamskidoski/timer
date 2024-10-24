@@ -22,7 +22,6 @@ const Timer = ({ type, minutes, onTimerEnd, onCancel }) => {
 
   const renderAnalog = () => (
     <div className="analog-timer">
-      {/* Här renderar du den analoga klockan, t.ex. med SVG eller CSS */}
       <p>{`${time.minutes}:${time.seconds < 10 ? '0' : ''}${time.seconds}`}</p>
     </div>
   );

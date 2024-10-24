@@ -1,80 +1,122 @@
 .alarm-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #1a1a1a;  /* Mörk bakgrundsfärg */
-    text-align: center;
-    color: #fff;
-    padding: 20px;  /* Ger lite padding för att hålla innehållet från kanterna */
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1a1a1a;  /* Mörk bakgrundsfärg */
+  text-align: center;
+  color: #fff;
+  padding: 20px;  /* Ger lite padding för att hålla innehållet från kanterna */
+  position: relative;
+}
+
+.alarm-view img {
+  width: 80px;  /* Justera storleken på ikonen för mobil */
+  margin-bottom: 20px;
+}
+
+.alarm-view h1 {
+  font-size: 24px;  /* Mindre rubrikstorlek för mobil */
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;  /* Justera avstånd mellan bokstäver */
+}
+
+/* Knappstilar för mobil */
+.alarm-view button {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 200px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 90%;  /* Gör knappen bredare och anpassad för mobilskärm */
+  max-width: 300px;  /* Begränsa knappens maxbredd */
+}
+
+.alarm-view button:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Bakgrundsringeffekt för mobil */
+.alarm-view::before {
+  content: '';
+  position: absolute;
+  margin-bottom: 250px;
+  width: 200px;  /* Justera storlek på pulserande cirkel för mobil */
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.alarm-view::after {
+  content: '';
+  position: absolute;
+  margin-bottom: 250px;
+  width: 300px;  /* Justera storlek på större cirkel för mobil */
+  height: 300px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+/* Animering för de pulserande cirklarna */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .alarm-view img {
-    width: 80px;  /* Justera storleken på ikonen för mobil */
-    margin-bottom: 20px;
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
   }
-  
+}
+
+/* Anpassningar för mindre skärmar */
+@media (max-width: 768px) {
   .alarm-view h1 {
-    font-size: 24px;  /* Mindre rubrikstorlek för mobil */
-    font-weight: bold;
-    margin-bottom: 20px;
-    letter-spacing: 1.5px;  /* Justera avstånd mellan bokstäver */
+    font-size: 20px; /* Mindre textstorlek för surfplattor */
   }
-  
-  /* Knappstilar för mobil */
+
   .alarm-view button {
-    background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    padding: 12px 24px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 200px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    width: 90%;  /* Gör knappen bredare och anpassad för mobilskärm */
-    max-width: 300px;  /* Begränsa knappens maxbredd */
+    font-size: 14px; /* Anpassa knappens textstorlek för surfplattor */
+    padding: 10px 20px;
   }
-  
-  .alarm-view button:hover {
-    background-color: #fff;
-    color: #333;
-  }
-  
-  /* Bakgrundsringeffekt för mobil */
+
   .alarm-view::before {
-    content: '';
-    position: absolute;
-    margin-bottom: 250px;
-    width: 200px;  /* Justera storlek på pulserande cirkel för mobil */
-    height: 200px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    animation: pulse 2s infinite ease-in-out;
+    width: 150px;  /* Minska storlek på pulserande cirkel */
+    height: 150px;
   }
-  
+
   .alarm-view::after {
-    content: '';
-    position: absolute;
-    margin-bottom: 250px;
-    width: 300px;  /* Justera storlek på större cirkel för mobil */
-    height: 300px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05);
-    animation: pulse 2.5s infinite ease-in-out;
+    width: 250px;  /* Minska storlek på större cirkel */
+    height: 250px;
   }
-  
-  /* Animering för de pulserande cirklarna */
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1.5);
-      opacity: 0;
-    }
+}
+
+@media (max-width: 480px) {
+  .alarm-view h1 {
+    font-size: 18px; /* Ytterligare minskning av rubrikstorlek för mobil */
   }
-  
+
+  .alarm-view button {
+    font-size: 12px; /* Anpassa knappens textstorlek för mobiler */
+    padding: 8px 16px;
+  }
+
+  .alarm-view::before {
+    width: 120px;  /* Ytterligare minskning av pulserande cirkel */
+    height: 120px;
+  }
+
+  .alarm-view::after {
+    width: 200px;  /* Ytterligare minskning av större cirkel */
+    height: 200px;
+  }
+}
