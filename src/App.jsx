@@ -1,66 +1,3 @@
-// import React, { useState } from 'react';
-// import LoadingScreen from './components/LoadingScreen';
-// import SetTimer from './components/SetTimer';
-// import AnalogTimer from './components/AnalogTimer';  // Analog timer komponent
-// import DigitalTimer from './components/DigitalTimer';  // Digital timer komponent
-// import AlarmView from './components/AlarmView';
-// import Menu from './components/Menu';  // Komponent för menyn
-
-// const App = () => {
-//   const [view, setView] = useState('loading');  // Hanterar olika vyer
-//   const [timerType, setTimerType] = useState('analog');  // Typ av timer (analog eller digital)
-//   const [minutes, setMinutes] = useState(10);  // Standardtid för timer
-
-//   const startTimer = (minutes) => {
-//     setMinutes(minutes);
-//     setView('timer');  // Gå till timer-vyn när start-knappen klickas
-//   };
-
-//   const cancelTimer = () => {
-//     setView('set-timer');  // Gå tillbaka till timerinställningarna om användaren avbryter timern
-//   };
-
-//   const timerEnd = () => {
-//     setView('alarm');  // När timern tar slut, visa alarmet
-//   };
-
-//   const handleMenuSelect = (type) => {
-//     setTimerType(type);  // Välj mellan analog, digital, eller textbaserad timer
-//     setView('set-timer');  // Efter menyn, gå till set-timer vyn
-//   };
-
-//   const handleReset = () => {
-//     setView('set-timer');  // Gå tillbaka till set-timer från alarmet
-//   };
-
-//   return (
-//     <div>
-//       {/* Laddningsskärm */}
-//       {view === 'loading' && <LoadingScreen onLogoClick={() => setView('menu')} />}
-
-//       {/* Meny */}
-//       {view === 'menu' && <Menu onSelect={handleMenuSelect} />}
-
-//       {/* Timerinställningsvyn */}
-//       {view === 'set-timer' && <SetTimer onStartTimer={startTimer} onMenuClick={() => setView('menu')} />}
-
-//       {/* Timer (analog eller digital) */}
-//       {view === 'timer' && (
-//         timerType === 'analog' ? (
-//           <AnalogTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} onMenuClick={() => setView('menu')} />  
-//         ) : (
-//           <DigitalTimer minutes={minutes} onTimerEnd={timerEnd} onCancel={cancelTimer} onMenuClick={() => setView('menu')}/>
-//         )
-//       )}
-      
-//       {/* Alarmvy */}
-//       {view === 'alarm' && <AlarmView onReset={handleReset} />}  {/* Lägg till onReset-funktion */}
-//     </div>
-//   );
-// };
-
-// export default App;
-
 import React, { useState, useEffect } from 'react';
 import EasyTimer from 'easytimer.js';
 import LoadingScreen from './components/LoadingScreen';
@@ -73,51 +10,61 @@ import Menu from './components/Menu';
 import './styles/TimerModeModal.css';
 
 const App = () => {
-  const [view, setView] = useState('loading');
-  const [timerType, setTimerType] = useState('analog');
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [timer, setTimer] = useState(null);
-  const [showModal, setShowModal] = useState(false); // Nytt tillstånd för modal
+  // Tillstånd för att hantera appens olika vyer och modal
+  const [view, setView] = useState('loading'); // Aktuell vy i appen
+  const [timerType, setTimerType] = useState('analog'); // Typ av timer (analog eller digital)
+  const [timeLeft, setTimeLeft] = useState(0); // Tid kvar på timern i sekunder
+  const [timer, setTimer] = useState(null); // Referens till timern
+  const [showModal, setShowModal] = useState(false); // Visningsstatus för modalen
 
+  // Funktion för att starta timern
   const startTimer = (minutes) => {
-    const newTimer = new EasyTimer();
-    newTimer.start({ countdown: true, startValues: { minutes } });
+    const newTimer = new EasyTimer(); // Skapar en ny instans av EasyTimer
+    newTimer.start({ countdown: true, startValues: { minutes } }); // Startar nedräkningen med angivet antal minuter
 
+    // Uppdaterar tid kvar i `timeLeft` varje sekund
     newTimer.addEventListener('secondsUpdated', () => {
       setTimeLeft(newTimer.getTotalTimeValues().seconds);
     });
 
+    // När timern når noll, byt till alarm-vyn och nollställ timer-referensen
     newTimer.addEventListener('targetAchieved', () => {
       setView('alarm');
       setTimer(null);
     });
 
-    setTimer(newTimer);
-    setTimeLeft(minutes * 60);
-    setView('timer');
+    setTimer(newTimer); // Sätter den skapade timern i `timer`-state
+    setTimeLeft(minutes * 60); // Uppdaterar `timeLeft` med starttid i sekunder
+    setView('timer'); // Byter till timer-vyn
   };
 
+  // Funktion för att avbryta timern
   const cancelTimer = () => {
     if (timer) {
-      timer.stop();
-      setTimer(null);
+      timer.stop(); // Stoppar timern om den existerar
+      setTimer(null); // Tar bort referensen till timern
     }
-    setView('set-timer');
+    setView('set-timer'); // Gå tillbaka till timerinställningsvyn
   };
 
+  // Funktion för att växla mellan analog och digital timer, samt stänga modal
   const switchTimerType = (type) => {
-    setTimerType(type);
-    setShowModal(false); // Stäng modalen efter val
+    setTimerType(type); // Uppdaterar timer-typen (analog/digital)
+    setShowModal(false); // Stänger modal efter val
   };
 
   return (
     <div>
+      {/* Laddningsskärm, visas initialt */}
       {view === 'loading' && <LoadingScreen onLogoClick={() => setView('menu')} />}
 
+      {/* Menyvy för att välja mellan analog och digital timer */}
       {view === 'menu' && <Menu onSelect={(type) => { setTimerType(type); setView('set-timer'); }} />}
 
+      {/* Vy för att ställa in timer */}
       {view === 'set-timer' && <SetTimer onStartTimer={startTimer} onMenuClick={() => setView('menu')} />}
 
+      {/* Timer-vyn, visar antingen analog eller digital timer beroende på `timerType` */}
       {view === 'timer' && (
         <>
           {timerType === 'analog' ? (
@@ -128,13 +75,14 @@ const App = () => {
         </>
       )}
 
+      {/* Alarmvy som visas när timern är slut */}
       {view === 'alarm' && <AlarmView onReset={() => setView('set-timer')} />}
 
-      {/* Visa modalen om showModal är true */}
+      {/* Modal för att välja timer-typ, visas om `showModal` är true */}
       {showModal && (
         <TimerModeModal
-          onClose={() => setShowModal(false)} // Stäng modal
-          onSelect={switchTimerType} // Välj timer-typ
+          onClose={() => setShowModal(false)} // Stänger modal
+          onSelect={switchTimerType} // Väljer timer-typ
         />
       )}
     </div>

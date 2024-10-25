@@ -1,44 +1,21 @@
-// //test 2
-// import React from 'react';
-
-// const AlarmView = ({ onReset }) => {
-//   return (
-//     <div className="alarm-view" style={{ textAlign: 'center', backgroundColor: '#333', height: '100vh', color: '#fff' }}>
-//       <h1>Times up!</h1>
-//       <button onClick={onReset}>SET NEW TIMER</button>
-//     </div>
-//   );
-// };
-
-// export default AlarmView;
-
-// import React from 'react';
-// import '../styles/AlarmView.css'
-
-// const AlarmView = ({ onReset }) => {
-//   return (
-//     <div className="alarm-view">
-//       {/* Lägg till alarm-ikonen */}
-//       <img src="/src/assets/alarm.svg" alt="Alarm icon" />
-//       <h1>Times up!</h1>
-//       <button onClick={onReset}>SET NEW TIMER</button>
-//     </div>
-//   );
-// };
-
-// export default AlarmView;
-
 import React from 'react';
-import '../styles/AlarmView.css'
+import '../styles/AlarmView.css';
 
 const AlarmView = ({ onReset }) => {
   return (
     <div className="alarm-view">
+      {/* Bildikon för alarm, visas när timern är slut */}
       <img src="/src/assets/alarm.svg" alt="Alarm icon" />
+      
+      {/* Rubrik som meddelar användaren att tiden är slut */}
       <h1>Times up!</h1>
+      
+      {/* Knapp för att ställa in en ny timer */}
       <button onClick={() => {
-        onReset();  // Anropar onReset-funktionen
-      }}>SET NEW TIMER</button>
+        onReset();  // Anropar onReset-funktionen som nollställer timern och återgår till timerinställningarna
+      }}>
+        SET NEW TIMER
+      </button>
     </div>
   );
 };

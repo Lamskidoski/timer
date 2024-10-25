@@ -60,7 +60,9 @@
   width: 30px; /* Justera storleken på ikonen */
   cursor: pointer;
   z-index: 100; /* Se till att ikonen visas över andra element */
+  
 }
+
 /* Lägg till responsiv design för mindre skärmar */
 @media (max-width: 768px) {
   .digital-timer h1 {

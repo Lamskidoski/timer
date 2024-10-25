@@ -1,68 +1,27 @@
-// test 1
-// import React, { useState } from 'react';
-// import { motion } from 'framer-motion'; // För animationer
-
-// const LoadingScreen = ({ onLogoClick }) => {
-//   return (
-//     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-//       <div className="loading-container">
-//         <img src="/path-to-logo.png" alt="Logo" onClick={onLogoClick} />
-//         <h2>Slogan här</h2>
-//       </div>
-//     </motion.div>
-//   );
-// };
-
-// export default LoadingScreen;
-
-//test 2
-// import React, { useEffect } from 'react';
-// import anime from 'animejs';
-
-// const LoadingScreen = ({ onLogoClick }) => {
-//   useEffect(() => {
-//     anime({
-//       targets: '.loading-container img',
-//       scale: [0, 1],  // Logotypen skalar upp från 0 till 1
-//       duration: 1000,
-//       easing: 'easeInOutQuad'
-//     });
-//   }, []);
-
-//   return (
-//     <div className="loading-container" style={{ textAlign: 'center', marginTop: '50px' }}>
-//       <img
-//         src="/src/assets/logo.png"
-//         alt="Logo"
-//         onClick={onLogoClick}
-//         style={{ cursor: 'pointer' }}
-//       />
-//       <h2>Slogan här</h2>
-//     </div>
-//   );
-// };
-
-// export default LoadingScreen;
-
-// test 3 
 import React, { useEffect } from 'react';
 import anime from 'animejs';
-import '../styles/LoadingScreen.css'
+import '../styles/LoadingScreen.css';
 
 const LoadingScreen = ({ onLogoClick }) => {
+  // Animering som körs när komponenten laddas
   useEffect(() => {
     anime({
-      targets: '.loading-container img',
-      scale: [0, 1],
-      duration: 1000,
-      easing: 'easeInOutQuad'
+      targets: '.loading-container img', // Mål: logobilden
+      scale: [0, 1], // Skala från 0 (osynlig) till 1 (full storlek)
+      duration: 1000, // Animeringens längd i millisekunder
+      easing: 'easeInOutQuad' // Mjuk in/ut-effekt för animering
     });
   }, []);
 
   return (
     <div className="loading-container" style={{ backgroundColor: '#000', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      {/* Logo-bild som användaren kan klicka på för att navigera vidare */}
       <img src="/src/assets/menu.svg" alt="Logo" onClick={onLogoClick} style={{ cursor: 'pointer' }} />
+      
+      {/* Huvudrubrik för laddningsskärmen */}
       <h1>Interval</h1>
+      
+      {/* Beskrivande text för laddningsskärmen */}
       <p style={{ color: '#fff' }}>For all your timing needs</p>
     </div>
   );

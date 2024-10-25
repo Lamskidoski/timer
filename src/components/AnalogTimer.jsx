@@ -1,57 +1,30 @@
-
-// import React, { useEffect, useState } from 'react';
-// import '../styles/AnalogTimer.css';
-
-// const AnalogTimer = ({ minutes, onCancel, onTimerEnd, onMenuClick }) => {
-//   const [timeLeft, setTimeLeft] = useState(minutes * 60); // Startvärde i sekunder
-
-//   useEffect(() => {
-//     if (timeLeft > 0) {
-//       const interval = setInterval(() => {
-//         setTimeLeft((prevTime) => prevTime - 1);
-//       }, 1000);
-
-//       return () => clearInterval(interval);
-//     } else if (timeLeft === 0) {
-//       onTimerEnd(); // Anropa funktion när timern når noll
-//     }
-//   }, [timeLeft, onTimerEnd]);
-
-//   // Beräkna vinklar för minut- och sekundvisarna
-//   const seconds = timeLeft % 60;
-//   const minutesRemaining = Math.floor(timeLeft / 60);
-//   const secondsDegrees = -(seconds / 60) * 360;
-//   const minutesDegrees = (minutesRemaining / 60) * 360 - (minutesRemaining * 6.1);
-
-//   return (
-//     <div className="timer">
-//       <img src="/src/assets/menu.svg" alt="Menu" className="menu-icon" onClick={onMenuClick} />
-      
-//       <img src="/src/assets/clockface.png" alt="clock-face" className="clock-face" />
-//       <div className="hand minute-hand" style={{ transform: `rotate(${minutesDegrees}deg)` }} />
-//       <div className="hand second-hand" style={{ transform: `rotate(${secondsDegrees}deg)` }} />
-//       <button className="abort-button" onClick={onCancel}>ABORT TIMER</button>
-//     </div>
-//   );
-// };
-
-// export default AnalogTimer;
 import React from 'react';
 import '../styles/AnalogTimer.css';
 
 const AnalogTimer = ({ timeLeft, onCancel, onMenuClick }) => {
-  const seconds = timeLeft % 60;
-  const minutes = Math.floor(timeLeft / 60);
-  const secondsDegrees = -(seconds / 60) * 360;
-  const minutesDegrees = (minutes / 60) * 360 - (minutes * 6.1);
+  // Beräkna antal sekunder och minuter kvar baserat på `timeLeft` (i sekunder)
+  const seconds = timeLeft % 60; // Tar bara de sista sekunderna från total tid
+  const minutes = Math.floor(timeLeft / 60); // Beräknar antal minuter kvar
+
+  // Beräknar vinklar för visarna (i grader) baserat på kvarvarande tid
+  const secondsDegrees = -(seconds / 60) * 360; // Vinkel för sekundvisaren
+  const minutesDegrees = (minutes / 60) * 360 - (minutes * 6.1); // Vinkel för minutvisaren
 
   return (
     <div className="timer">
+      {/* Menyikon som öppnar inställningar (exempelvis för att byta mellan digital och analog vy) */}
       <img src="/src/assets/menu.svg" alt="Menu" className="menu-icon" onClick={onMenuClick} />
       
+      {/* Bild för klockans urtavla */}
       <img src="/src/assets/clockface.png" alt="clock-face" className="clock-face" />
+      
+      {/* Visare för minuter, roteras baserat på `minutesDegrees` */}
       <div className="hand minute-hand" style={{ transform: `rotate(${minutesDegrees}deg)` }} />
+      
+      {/* Visare för sekunder, roteras baserat på `secondsDegrees` */}
       <div className="hand second-hand" style={{ transform: `rotate(${secondsDegrees}deg)` }} />
+      
+      {/* Knapp för att avbryta timern, anropar `onCancel` för att hantera avbrytningen */}
       <button className="abort-button" onClick={onCancel}>ABORT TIMER</button>
     </div>
   );
