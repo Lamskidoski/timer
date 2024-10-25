@@ -1,0 +1,63 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%; /* Gör modalen bredare på mobiler */
+    height: 30%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .modal button {
+    display: block;
+    width: 100%; /* Använd full bredd för mobilvänliga knappar */
+    margin: 10px auto;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #000;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  /* Responsiv design för mobiler */
+  @media (max-width: 768px) {
+    .modal {
+      padding: 15px;
+      width: 90%; /* Nästan full bredd för mindre skärmar */
+      max-width: 300px; /* Justera maxbredden för små skärmar */
+    }
+  
+    .modal h2 {
+      font-size: 1.2rem; /* Mindre rubrikstorlek */
+    }
+  
+    .modal button {
+      padding: 10px;
+      font-size: 14px; /* Mindre text för knappar */
+    }
+  }
+  
